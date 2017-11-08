@@ -32,10 +32,10 @@ public class KontakModel
 
         Cursor cursor = this.db.executeRead(sql);
 
-        cursor.moveToFirst();
-
         if(cursor.getCount() > 0)
         {
+            cursor.moveToFirst();
+
             do
             {
                 int id = cursor.getInt(0);
@@ -56,12 +56,58 @@ public class KontakModel
         return semuaKontak;
     }
 
-    public void insertOne(Kontak k)
+    public void insert(Kontak k)
     {
         String nama = k.getNama();
         String nomor = k.getNomor();
 
         String sql = "INSERT INTO kontak(nama, nomor) VALUES('" + nama + "', '" + nomor + "')";
+
+        this.db.executeWrite(sql);
+    }
+
+    public Kontak selectOne(int id)
+    {
+        String sql = "SELECT * FROM kontak WHERE id = '" + id + "'";
+
+        Cursor cursor = this.db.executeRead(sql);
+
+        if(cursor.getCount() > 0)
+        {
+            cursor.moveToFirst();
+
+            Kontak k = new Kontak();
+
+            k.setId(cursor.getInt(0));
+            k.setNama(cursor.getString(1));
+            k.setNomor(cursor.getString(2));
+
+            return k;
+        }
+
+        return null;
+    }
+
+    public void delete(Kontak k)
+    {
+        if(k.getId() < 0) // ID negatif -> Bukan dari tabel
+            return;
+
+        String sql = "DELETE FROM kontak WHERE id = '" + k.getId() + "'";
+
+        this.db.executeWrite(sql);
+    }
+
+    public void update(Kontak k)
+    {
+        if(k.getId() < 0)
+            return;
+
+        int id = k.getId();
+        String nama = k.getNama();
+        String nomor = k.getNomor();
+
+        String sql = "UPDATE kontak SET nama = '" + nama + "', nomor = '" + nomor + "' WHERE id = '" + id + "'";
 
         this.db.executeWrite(sql);
     }

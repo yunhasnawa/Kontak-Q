@@ -12,7 +12,7 @@ public class Kontak
 
     public Kontak()
     {
-
+        this.id = -1;
     }
 
     public int getId() {

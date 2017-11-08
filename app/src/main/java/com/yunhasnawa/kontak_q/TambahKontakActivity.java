@@ -12,6 +12,10 @@ import com.yunhasnawa.kontak_q.models.KontakModel;
 
 public class TambahKontakActivity extends AppCompatActivity
 {
+    // Data
+    private KontakModel mKontak;
+
+    // Komponen
     private EditText txtNama;
     private EditText txtNomor;
     private Button btnSimpan;
@@ -23,7 +27,13 @@ public class TambahKontakActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_kontak);
 
+        this.initData();
         this.initComponents();
+    }
+
+    private void initData()
+    {
+        this.mKontak = new KontakModel(this);
     }
 
     private void initComponents()
@@ -57,8 +67,7 @@ public class TambahKontakActivity extends AppCompatActivity
         kontakBaru.setNama(nama);
         kontakBaru.setNomor(nomor);
 
-        KontakModel mKontak = new KontakModel(this);
-        mKontak.insertOne(kontakBaru);
+        this.mKontak.insert(kontakBaru);
 
         Toast.makeText(this, "Kontak berhasil ditambahkan", Toast.LENGTH_SHORT).show();
 
