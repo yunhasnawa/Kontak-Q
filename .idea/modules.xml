@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidStudio-Kontak-Q.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidStudio-Kontak-Q.iml" group="Kontak-Q" />
       <module fileurl="file://$PROJECT_DIR$/Kontak-Q.iml" filepath="$PROJECT_DIR$/Kontak-Q.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Kontak-Q-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Kontak-Q-app.iml" group="Kontak-Q/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
